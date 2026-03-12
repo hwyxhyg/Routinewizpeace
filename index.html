@@ -137,13 +137,25 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
 .hem{font-family:'Space Mono',monospace;font-size:11px;color:var(--sage)}
 .hee{text-align:center;color:var(--mist);font-style:italic;padding:20px 0;font-size:14px}
 /* projects */
+.pj-controls{display:flex;gap:8px;margin-bottom:16px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.pj-ctrl-btn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 12px;border-radius:4px;border:1px solid var(--line);background:0;color:var(--warm);cursor:pointer;transition:all .2s;-webkit-appearance:none}
+.pj-ctrl-btn:hover{border-color:var(--sage);color:var(--ink)}
+.pj-ctrl-btn.on{background:var(--sage-soft);border-color:var(--sage)}
 .pj-list{display:flex;flex-direction:column;gap:16px}
 .pj-card{border-radius:8px;background:rgba(255,255,255,.45);overflow:hidden;transition:box-shadow .3s}
 .pj-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.pj-head{padding:14px 16px 12px;cursor:pointer;display:flex;align-items:center;gap:10px}
+.pj-head{padding:14px 16px 12px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.pj-pri-badge{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;flex-shrink:0;letter-spacing:1px}
+.pj-pri-badge.p0{background:#c4553a;color:#fff}
+.pj-pri-badge.p1{background:#d4883a;color:#fff}
+.pj-pri-badge.p2{background:#b8923e;color:#fff}
+.pj-pri-badge.p3{background:var(--mist);color:#fff}
 .pj-name{flex:1;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:600;border:0;background:0;outline:0;color:var(--ink);min-width:0}
 .pj-name::placeholder{color:var(--mist);font-weight:400}
 .pj-pct-badge{font-family:'Space Mono',monospace;font-size:11px;color:var(--sage);min-width:36px;text-align:right}
+.pj-move{background:0;border:0;color:var(--mist);cursor:pointer;font-size:13px;padding:2px 4px;opacity:0;transition:opacity .2s;flex-shrink:0;-webkit-appearance:none}
+.pj-card:hover .pj-move{opacity:.5}
+.pj-move:hover{color:var(--ink);opacity:1!important}
 .pj-arrow{color:var(--mist);font-size:12px;transition:transform .3s;flex-shrink:0}
 .pj-arrow.open{transform:rotate(180deg)}
 .pj-del{background:0;border:0;color:var(--mist);cursor:pointer;font-size:15px;padding:4px;opacity:0;transition:opacity .2s;flex-shrink:0}
@@ -157,6 +169,14 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
 .pj-body.open{display:block}
 .pj-row{display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap}
 .pj-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--mist);min-width:48px;text-transform:uppercase;flex-shrink:0}
+/* priority selector */
+.pj-pris{display:flex;gap:4px;flex-wrap:wrap}
+.pj-pri-btn{font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--line);color:var(--warm);cursor:pointer;background:0;transition:all .2s;-webkit-appearance:none}
+.pj-pri-btn.on{color:#fff}
+.pj-pri-btn.on[data-p="0"]{background:#c4553a;border-color:#c4553a}
+.pj-pri-btn.on[data-p="1"]{background:#d4883a;border-color:#d4883a}
+.pj-pri-btn.on[data-p="2"]{background:#b8923e;border-color:#b8923e}
+.pj-pri-btn.on[data-p="3"]{background:var(--mist);border-color:var(--mist)}
 /* progress slider */
 .pj-slider-wrap{flex:1;display:flex;align-items:center;gap:10px}
 .pj-slider-track{flex:1;height:6px;background:var(--line);border-radius:3px;position:relative;cursor:pointer}
@@ -165,11 +185,17 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
 .pj-slider-val{font-family:'Space Mono',monospace;font-size:14px;color:var(--sage);min-width:32px;text-align:center}
 /* tags */
 .pj-tags{display:flex;gap:4px;flex-wrap:wrap;flex:1}
-.pj-tag{font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--line);color:var(--warm);cursor:pointer;background:0;transition:all .2s;-webkit-appearance:none}
+.pj-tag{font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--line);color:var(--warm);cursor:pointer;background:0;transition:all .2s;-webkit-appearance:none;position:relative}
 .pj-tag.on{background:var(--sage-soft);border-color:var(--sage);color:var(--ink)}
 .pj-tag-add{font-family:'Space Mono',monospace;font-size:10px;padding:4px 8px;border-radius:12px;border:1px dashed var(--line);color:var(--mist);cursor:pointer;background:0;transition:all .2s;-webkit-appearance:none}
 .pj-tag-add:hover{border-color:var(--sage);color:var(--warm)}
 .pj-tag-inp{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:12px;border:1px solid var(--accent-soft);color:var(--ink);background:rgba(255,255,255,.5);outline:0;width:80px}
+/* tag manager modal */
+.tm-list{display:flex;flex-direction:column;gap:4px;margin:8px 0}
+.tm-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:4px;background:rgba(255,255,255,.3)}
+.tm-name{flex:1;font-family:'Space Mono',monospace;font-size:12px;color:var(--ink)}
+.tm-del{background:0;border:0;color:var(--mist);cursor:pointer;font-size:14px;padding:2px}
+.tm-del:hover{color:var(--accent)}
 .pj-inp{flex:1;border:0;background:0;font-family:'Crimson Pro','Noto Serif SC',serif;font-size:14px;color:var(--ink);outline:0;min-width:0;line-height:1.5}
 .pj-inp::placeholder{color:var(--mist);font-style:italic}
 .pj-date{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:4px;padding:4px 8px;background:rgba(255,255,255,.5);color:var(--ink);outline:0}
@@ -259,7 +285,11 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
   <!-- PROJECTS -->
   <div class="view" id="vP">
     <div style="text-align:center;margin-bottom:8px;font-family:'Noto Serif SC',serif;font-size:20px;font-weight:600">我的活</div>
-    <div style="text-align:center;margin-bottom:20px;font-size:13px;color:var(--warm);font-style:italic">点击卡片展开详情和时间线</div>
+    <div style="text-align:center;margin-bottom:16px;font-size:13px;color:var(--warm);font-style:italic">P0🔴必须做 · P1🟠本周推 · P2🟡可以缓 · P3⚪有空再说</div>
+    <div class="pj-controls">
+      <button class="pj-ctrl-btn" id="pjSortBtn" onclick="sortPjByPri()">按优先级排序 ↕</button>
+      <button class="pj-ctrl-btn" onclick="openTagMgr()">管理标签</button>
+    </div>
     <div class="pj-list" id="pjList"></div>
     <button class="pj-add" onclick="addPj()">+ 新增一个活</button>
     <div class="sv">
@@ -269,7 +299,7 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal: Schedule -->
 <div class="mo" id="mo">
   <div class="ml">
     <div class="mlt">编辑课表</div>
@@ -277,6 +307,21 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
     <div class="mac">
       <button class="mb mbc" onclick="closeM()">取消</button>
       <button class="mb mbs" onclick="saveSchedM()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Tag Manager -->
+<div class="mo" id="moTm">
+  <div class="ml">
+    <div class="mlt">管理标签</div>
+    <div class="tm-list" id="tmList"></div>
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <input class="mi" id="tmNewInp" placeholder="新标签名称" style="flex:1" onkeydown="if(event.key==='Enter')addGlobalTag()">
+      <button class="mb mbs" onclick="addGlobalTag()" style="padding:6px 14px">添加</button>
+    </div>
+    <div class="mac" style="margin-top:12px">
+      <button class="mb mbs" onclick="closeTagMgr()">完成</button>
     </div>
   </div>
 </div>
@@ -565,14 +610,15 @@ async function togH() {
 
 // ===== PROJECTS =====
 let projects = [];
-let customTags = []; // user-defined tags
+let customTags = [];
+const priLabels = ['P0','P1','P2','P3'];
+const priColors = ['#c4553a','#d4883a','#b8923e','#a8b0b8'];
 
 const defProjects = [
-  {id:uid(),name:'数据新闻·智媒招考项目',pct:20,tags:['数据新闻','课程'],next:'',deadline:'',timeline:[],open:false},
-  {id:uid(),name:'atypica.AI 实习',pct:40,tags:['实习','内容营销'],next:'',deadline:'',timeline:[],open:false},
-  {id:uid(),name:'展览项目（大气科学史）',pct:5,tags:['兴趣','展览'],next:'',deadline:'',timeline:[],open:false}
+  {id:uid(),name:'数据新闻·智媒招考项目',pct:20,pri:1,tags:['数据新闻','课程'],next:'',deadline:'',timeline:[],open:false},
+  {id:uid(),name:'atypica.AI 实习',pct:40,pri:0,tags:['实习','内容营销'],next:'',deadline:'',timeline:[],open:false},
+  {id:uid(),name:'展览项目（大气科学史）',pct:5,pri:2,tags:['兴趣','展览'],next:'',deadline:'',timeline:[],open:false}
 ];
-
 const defTags = ['核心方向','实习','课程','数据新闻','内容营销','兴趣','展览','AI'];
 
 function renPj() {
@@ -580,82 +626,85 @@ function renPj() {
   el.innerHTML = '';
   projects.forEach((p, i) => {
     const cid = 'pjc-' + p.id;
+    const pri = p.pri ?? 2;
+    const priCls = 'p' + pri;
     const card = document.createElement('div'); card.className = 'pj-card'; card.id = cid;
 
-    // Head (always visible)
-    let headH = '<div class="pj-head" onclick="tglPjBody(' + i + ')">';
-    headH += '<input type="text" class="pj-name" value="' + esc(p.name) + '" placeholder="项目名称" oninput="projects[' + i + '].name=this.value" onclick="event.stopPropagation()">';
-    headH += '<span class="pj-pct-badge">' + (p.pct || 0) + '%</span>';
-    headH += '<span class="pj-arrow' + (p.open ? ' open' : '') + '">▾</span>';
-    headH += '<button class="pj-del" onclick="event.stopPropagation();rmPj(' + i + ')">×</button>';
-    headH += '</div>';
-
-    // Progress bar under head
-    headH += '<div class="pj-bar-wrap"><div class="pj-bar" style="width:' + (p.pct || 0) + '%"></div></div>';
+    // Head
+    let h = '<div class="pj-head" onclick="tglPjBody(' + i + ')">';
+    h += '<span class="pj-pri-badge ' + priCls + '">' + priLabels[pri] + '</span>';
+    h += '<input type="text" class="pj-name" value="' + esc(p.name) + '" placeholder="项目名称" oninput="projects[' + i + '].name=this.value" onclick="event.stopPropagation()">';
+    h += '<span class="pj-pct-badge">' + (p.pct || 0) + '%</span>';
+    // Move buttons
+    if (i > 0) h += '<button class="pj-move" onclick="event.stopPropagation();movePj(' + i + ',-1)" title="上移">↑</button>';
+    if (i < projects.length - 1) h += '<button class="pj-move" onclick="event.stopPropagation();movePj(' + i + ',1)" title="下移">↓</button>';
+    h += '<span class="pj-arrow' + (p.open ? ' open' : '') + '">▾</span>';
+    h += '<button class="pj-del" onclick="event.stopPropagation();rmPj(' + i + ')">×</button>';
+    h += '</div>';
+    h += '<div class="pj-bar-wrap"><div class="pj-bar" style="width:' + (p.pct || 0) + '%"></div></div>';
 
     // Body
-    let bodyH = '<div class="pj-body' + (p.open ? ' open' : '') + '">';
+    let b = '<div class="pj-body' + (p.open ? ' open' : '') + '">';
+
+    // Priority
+    b += '<div class="pj-row" style="margin-top:10px"><span class="pj-label">优先级</span><div class="pj-pris">';
+    [0,1,2,3].forEach(lv => {
+      b += '<button class="pj-pri-btn' + (pri === lv ? ' on' : '') + '" data-p="' + lv + '" onclick="setPjPri(' + i + ',' + lv + ')">' + priLabels[lv] + '</button>';
+    });
+    b += '</div></div>';
 
     // Progress slider
-    bodyH += '<div class="pj-row" style="margin-top:10px"><span class="pj-label">进度</span>';
-    bodyH += '<div class="pj-slider-wrap"><div class="pj-slider-track" id="pjs-' + i + '" onmousedown="pjSliderStart(event,' + i + ')" ontouchstart="pjSliderStart(event,' + i + ')">';
-    bodyH += '<div class="pj-slider-fill" style="width:' + (p.pct || 0) + '%"></div>';
-    bodyH += '<div class="pj-slider-thumb" style="left:' + (p.pct || 0) + '%"></div>';
-    bodyH += '</div><span class="pj-slider-val">' + (p.pct || 0) + '%</span></div></div>';
+    b += '<div class="pj-row"><span class="pj-label">进度</span>';
+    b += '<div class="pj-slider-wrap"><div class="pj-slider-track" id="pjs-' + i + '" onmousedown="pjSliderStart(event,' + i + ')" ontouchstart="pjSliderStart(event,' + i + ')">';
+    b += '<div class="pj-slider-fill" style="width:' + (p.pct || 0) + '%"></div>';
+    b += '<div class="pj-slider-thumb" style="left:' + (p.pct || 0) + '%"></div>';
+    b += '</div><span class="pj-slider-val">' + (p.pct || 0) + '%</span></div></div>';
 
     // Tags
-    bodyH += '<div class="pj-row"><span class="pj-label">标签</span><div class="pj-tags">';
+    b += '<div class="pj-row"><span class="pj-label">标签</span><div class="pj-tags">';
     customTags.forEach(tag => {
       const on = (p.tags || []).includes(tag);
-      bodyH += '<button class="pj-tag' + (on ? ' on' : '') + '" onclick="tglPjTag(' + i + ',\'' + esc(tag) + '\')">' + tag + '</button>';
+      b += '<button class="pj-tag' + (on ? ' on' : '') + '" onclick="tglPjTag(' + i + ',\'' + esc(tag) + '\')">' + tag + '</button>';
     });
-    bodyH += '<span id="pjta-' + i + '"></span>';
-    bodyH += '<button class="pj-tag-add" onclick="showTagInp(' + i + ')">+</button>';
-    bodyH += '</div></div>';
+    b += '<span id="pjta-' + i + '"></span>';
+    b += '<button class="pj-tag-add" onclick="showTagInp(' + i + ')">+</button>';
+    b += '</div></div>';
 
     // Next step
-    bodyH += '<div class="pj-row"><span class="pj-label">下一步</span>';
-    bodyH += '<input type="text" class="pj-inp" value="' + esc(p.next || '') + '" placeholder="下一个具体动作…" oninput="projects[' + i + '].next=this.value"></div>';
+    b += '<div class="pj-row"><span class="pj-label">下一步</span>';
+    b += '<input type="text" class="pj-inp" value="' + esc(p.next || '') + '" placeholder="下一个具体动作…" oninput="projects[' + i + '].next=this.value"></div>';
 
     // Deadline
-    bodyH += '<div class="pj-row"><span class="pj-label">截止</span>';
-    bodyH += '<input type="date" class="pj-date" value="' + (p.deadline || '') + '" onchange="projects[' + i + '].deadline=this.value"></div>';
+    b += '<div class="pj-row"><span class="pj-label">截止</span>';
+    b += '<input type="date" class="pj-date" value="' + (p.deadline || '') + '" onchange="projects[' + i + '].deadline=this.value"></div>';
 
     // Timeline
-    bodyH += '<div class="pj-tl-title"><span>项目时间线</span><button class="pj-tl-add" onclick="addTlEntry(' + i + ')">+ 记一笔</button></div>';
-    bodyH += '<div class="pj-tl" id="pjtl-' + i + '">';
+    b += '<div class="pj-tl-title"><span>项目时间线</span><button class="pj-tl-add" onclick="addTlEntry(' + i + ')">+ 记一笔</button></div>';
+    b += '<div class="pj-tl" id="pjtl-' + i + '">';
     const tl = p.timeline || [];
-    if (tl.length === 0) {
-      bodyH += '<div style="padding:12px 0;color:var(--mist);font-style:italic;font-size:13px">还没有记录，点「记一笔」开始。</div>';
+    if (!tl.length) {
+      b += '<div style="padding:12px 0;color:var(--mist);font-style:italic;font-size:13px">还没有记录，点「记一笔」开始。</div>';
     } else {
-      // Show newest first
       tl.slice().reverse().forEach((entry, ri) => {
         const ei = tl.length - 1 - ri;
-        bodyH += '<div class="pj-tl-entry">';
-        bodyH += '<div class="pj-tl-dot"></div>';
-        bodyH += '<div class="pj-tl-date">' + (entry.date || '') + (entry.pct !== undefined ? '  ·  ' + entry.pct + '%' : '') + '</div>';
-        bodyH += '<textarea class="pj-tl-text" rows="1" placeholder="做了什么…" oninput="projects[' + i + '].timeline[' + ei + '].text=this.value;autoGrow(this)">' + (entry.text || '') + '</textarea>';
-        bodyH += '<button class="pj-tl-del" onclick="rmTlEntry(' + i + ',' + ei + ')">×</button>';
-        bodyH += '</div>';
+        b += '<div class="pj-tl-entry"><div class="pj-tl-dot"></div>';
+        b += '<div class="pj-tl-date">' + (entry.date || '') + (entry.pct !== undefined ? '  ·  ' + entry.pct + '%' : '') + '</div>';
+        b += '<textarea class="pj-tl-text" rows="1" placeholder="做了什么…" oninput="projects[' + i + '].timeline[' + ei + '].text=this.value;autoGrow(this)">' + (entry.text || '') + '</textarea>';
+        b += '<button class="pj-tl-del" onclick="rmTlEntry(' + i + ',' + ei + ')">×</button></div>';
       });
     }
-    bodyH += '</div>';
+    b += '</div></div>';
 
-    bodyH += '</div>';
-    card.innerHTML = headH + bodyH;
+    card.innerHTML = h + b;
     el.appendChild(card);
   });
 }
 
 function esc(s) { return (s || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
-
-function tglPjBody(i) {
-  projects[i].open = !projects[i].open;
-  renPj();
-}
+function tglPjBody(i) { projects[i].open = !projects[i].open; renPj(); }
 
 function addPj() {
-  projects.push({id:uid(),name:'',pct:0,tags:[],next:'',deadline:'',timeline:[],open:true});
+  projects.push({id:uid(),name:'',pct:0,pri:2,tags:[],next:'',deadline:'',timeline:[],open:true});
   renPj();
   const names = document.querySelectorAll('.pj-name');
   if (names.length) names[names.length - 1].focus();
@@ -663,13 +712,25 @@ function addPj() {
 
 function rmPj(i) { if (confirm('确定删除「' + (projects[i].name || '未命名') + '」？')) { projects.splice(i, 1); renPj(); } }
 
+function setPjPri(i, lv) { projects[i].pri = lv; renPj(); }
+
+function movePj(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= projects.length) return;
+  const tmp = projects[i];
+  projects[i] = projects[j];
+  projects[j] = tmp;
+  renPj();
+}
+
+function sortPjByPri() {
+  projects.sort((a, b) => (a.pri ?? 2) - (b.pri ?? 2));
+  renPj();
+}
+
 // Progress slider
 let pjDragIdx = -1;
-function pjSliderStart(e, i) {
-  pjDragIdx = i;
-  pjSliderCalc(e, i);
-  e.preventDefault();
-}
+function pjSliderStart(e, i) { pjDragIdx = i; pjSliderCalc(e, i); e.preventDefault(); }
 
 function pjSliderCalc(e, i) {
   const track = $('pjs-' + i);
@@ -678,15 +739,12 @@ function pjSliderCalc(e, i) {
   const cx = e.touches ? e.touches[0].clientX : e.clientX;
   const pct = Math.round(Math.max(0, Math.min(1, (cx - r.left) / r.width)) * 100);
   projects[i].pct = pct;
-  // Update DOM directly for smooth dragging
   track.querySelector('.pj-slider-fill').style.width = pct + '%';
   track.querySelector('.pj-slider-thumb').style.left = pct + '%';
   track.parentElement.querySelector('.pj-slider-val').textContent = pct + '%';
-  // Update header bar and badge
   const card = track.closest('.pj-card');
   if (card) {
-    const bar = card.querySelector('.pj-bar');
-    const badge = card.querySelector('.pj-pct-badge');
+    const bar = card.querySelector('.pj-bar'); const badge = card.querySelector('.pj-pct-badge');
     if (bar) bar.style.width = pct + '%';
     if (badge) badge.textContent = pct + '%';
   }
@@ -717,39 +775,65 @@ function addCustomTag(i, val) {
   val = val.trim();
   if (!val) return;
   if (!customTags.includes(val)) customTags.push(val);
-  if (!(projects[i].tags || []).includes(val)) {
-    if (!projects[i].tags) projects[i].tags = [];
-    projects[i].tags.push(val);
-  }
+  if (!projects[i].tags) projects[i].tags = [];
+  if (!projects[i].tags.includes(val)) projects[i].tags.push(val);
   renPj();
+}
+
+// Tag Manager Modal
+function openTagMgr() {
+  renTmList();
+  $('moTm').classList.add('op');
+}
+
+function closeTagMgr() { $('moTm').classList.remove('op'); renPj(); }
+
+function renTmList() {
+  const el = $('tmList');
+  el.innerHTML = customTags.map((t, i) =>
+    '<div class="tm-item"><span class="tm-name">' + t + '</span><button class="tm-del" onclick="delGlobalTag(' + i + ')">×</button></div>'
+  ).join('');
+}
+
+function delGlobalTag(i) {
+  const tag = customTags[i];
+  customTags.splice(i, 1);
+  // Also remove from all projects
+  projects.forEach(p => {
+    if (p.tags) p.tags = p.tags.filter(t => t !== tag);
+  });
+  renTmList();
+}
+
+function addGlobalTag() {
+  const inp = $('tmNewInp');
+  const val = inp.value.trim();
+  if (!val || customTags.includes(val)) { inp.value = ''; return; }
+  customTags.push(val);
+  inp.value = '';
+  renTmList();
 }
 
 // Timeline
 function addTlEntry(i) {
   if (!projects[i].timeline) projects[i].timeline = [];
-  const today = new Date().toISOString().split('T')[0];
-  projects[i].timeline.push({date: today, text: '', pct: projects[i].pct});
+  projects[i].timeline.push({date: new Date().toISOString().split('T')[0], text: '', pct: projects[i].pct});
   renPj();
-  // Focus the newest entry textarea
   const tl = $('pjtl-' + i);
-  if (tl) { const areas = tl.querySelectorAll('.pj-tl-text'); if (areas.length) areas[0].focus(); }
+  if (tl) { const a = tl.querySelectorAll('.pj-tl-text'); if (a.length) a[0].focus(); }
 }
 
-function rmTlEntry(i, ei) {
-  projects[i].timeline.splice(ei, 1);
-  renPj();
-}
+function rmTlEntry(i, ei) { projects[i].timeline.splice(ei, 1); renPj(); }
 
-function autoGrow(el) {
-  el.style.height = 'auto';
-  el.style.height = el.scrollHeight + 'px';
-}
+function autoGrow(el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; }
 
 async function loadPj() {
   const data = await load('ss-projects');
   if (data) {
     projects = data.projects || defProjects;
     customTags = data.tags || defTags;
+    // Migrate: add pri field if missing
+    projects.forEach(p => { if (p.pri === undefined) p.pri = 2; });
   } else {
     projects = defProjects;
     customTags = defTags;
@@ -759,10 +843,7 @@ async function loadPj() {
 
 async function savePj() {
   $('svP').disabled = true;
-  // Collect tags from all projects to ensure customTags is complete
-  projects.forEach(p => {
-    (p.tags || []).forEach(t => { if (!customTags.includes(t)) customTags.push(t); });
-  });
+  projects.forEach(p => { (p.tags || []).forEach(t => { if (!customTags.includes(t)) customTags.push(t); }); });
   await save('ss-projects', {projects, tags: customTags});
   flash('mP');
   $('svP').disabled = false;
