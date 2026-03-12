@@ -12,7 +12,6 @@
 <script>
 // ============================================================
 //  👇 把你的 Google Apps Script URL 粘贴到下面这行的引号里 👇
-  
 // ============================================================
 const API_URL = 'https://script.google.com/macros/s/AKfycbwxNhRcyIHpCcrOOnt3TN5U0otyuip3W_-wnJJ8NJBFpZC6YZXJ0PT5oAx9OZ-53yg9/exec';
 // ============================================================
@@ -137,6 +136,63 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
 .heo{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:600;margin-bottom:2px}
 .hem{font-family:'Space Mono',monospace;font-size:11px;color:var(--sage)}
 .hee{text-align:center;color:var(--mist);font-style:italic;padding:20px 0;font-size:14px}
+/* projects */
+.pj-list{display:flex;flex-direction:column;gap:16px}
+.pj-card{border-radius:8px;background:rgba(255,255,255,.45);overflow:hidden;transition:box-shadow .3s}
+.pj-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.pj-head{padding:14px 16px 12px;cursor:pointer;display:flex;align-items:center;gap:10px}
+.pj-name{flex:1;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:600;border:0;background:0;outline:0;color:var(--ink);min-width:0}
+.pj-name::placeholder{color:var(--mist);font-weight:400}
+.pj-pct-badge{font-family:'Space Mono',monospace;font-size:11px;color:var(--sage);min-width:36px;text-align:right}
+.pj-arrow{color:var(--mist);font-size:12px;transition:transform .3s;flex-shrink:0}
+.pj-arrow.open{transform:rotate(180deg)}
+.pj-del{background:0;border:0;color:var(--mist);cursor:pointer;font-size:15px;padding:4px;opacity:0;transition:opacity .2s;flex-shrink:0}
+.pj-card:hover .pj-del{opacity:.6}
+.pj-del:hover{color:var(--accent);opacity:1!important}
+/* progress bar */
+.pj-bar-wrap{height:3px;background:var(--line);margin:0 16px}
+.pj-bar{height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--sage));border-radius:2px;transition:width .3s}
+/* card body */
+.pj-body{display:none;padding:14px 16px 16px}
+.pj-body.open{display:block}
+.pj-row{display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap}
+.pj-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--mist);min-width:48px;text-transform:uppercase;flex-shrink:0}
+/* progress slider */
+.pj-slider-wrap{flex:1;display:flex;align-items:center;gap:10px}
+.pj-slider-track{flex:1;height:6px;background:var(--line);border-radius:3px;position:relative;cursor:pointer}
+.pj-slider-fill{height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--sage));border-radius:3px;transition:width .15s}
+.pj-slider-thumb{width:20px;height:20px;border-radius:50%;background:var(--paper);border:2px solid var(--sage);position:absolute;top:50%;transform:translate(-50%,-50%);cursor:grab}
+.pj-slider-val{font-family:'Space Mono',monospace;font-size:14px;color:var(--sage);min-width:32px;text-align:center}
+/* tags */
+.pj-tags{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+.pj-tag{font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--line);color:var(--warm);cursor:pointer;background:0;transition:all .2s;-webkit-appearance:none}
+.pj-tag.on{background:var(--sage-soft);border-color:var(--sage);color:var(--ink)}
+.pj-tag-add{font-family:'Space Mono',monospace;font-size:10px;padding:4px 8px;border-radius:12px;border:1px dashed var(--line);color:var(--mist);cursor:pointer;background:0;transition:all .2s;-webkit-appearance:none}
+.pj-tag-add:hover{border-color:var(--sage);color:var(--warm)}
+.pj-tag-inp{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:12px;border:1px solid var(--accent-soft);color:var(--ink);background:rgba(255,255,255,.5);outline:0;width:80px}
+.pj-inp{flex:1;border:0;background:0;font-family:'Crimson Pro','Noto Serif SC',serif;font-size:14px;color:var(--ink);outline:0;min-width:0;line-height:1.5}
+.pj-inp::placeholder{color:var(--mist);font-style:italic}
+.pj-date{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);border-radius:4px;padding:4px 8px;background:rgba(255,255,255,.5);color:var(--ink);outline:0}
+.pj-date:focus{border-color:var(--accent-soft)}
+/* timeline */
+.pj-tl-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--mist);text-transform:uppercase;margin:12px 0 8px;display:flex;align-items:center;justify-content:space-between}
+.pj-tl{position:relative;padding-left:20px;margin-bottom:8px}
+.pj-tl::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:1.5px;background:var(--line)}
+.pj-tl-entry{position:relative;padding:8px 0 12px;border-bottom:1px solid rgba(0,0,0,.03)}
+.pj-tl-entry:last-child{border-bottom:0}
+.pj-tl-dot{position:absolute;left:-18.5px;top:12px;width:8px;height:8px;border-radius:50%;background:var(--sage);border:2px solid var(--paper)}
+.pj-tl-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--mist);margin-bottom:3px;letter-spacing:1px}
+.pj-tl-text{font-family:'Crimson Pro','Noto Serif SC',serif;font-size:14px;color:var(--ink);line-height:1.6;border:0;background:0;width:100%;outline:0;resize:none;min-height:20px}
+.pj-tl-text::placeholder{color:var(--mist);font-style:italic}
+.pj-tl-pct{font-family:'Space Mono',monospace;font-size:10px;color:var(--sage);margin-top:2px}
+.pj-tl-del{position:absolute;right:0;top:8px;background:0;border:0;color:var(--mist);cursor:pointer;font-size:12px;opacity:0;transition:opacity .2s;padding:2px}
+.pj-tl-entry:hover .pj-tl-del{opacity:.6}
+.pj-tl-del:hover{color:var(--accent);opacity:1!important}
+.pj-tl-add{background:0;border:0;font-family:'Crimson Pro',serif;font-size:12px;color:var(--mist);cursor:pointer;font-style:italic;padding:6px 0;transition:color .3s}
+.pj-tl-add:hover{color:var(--warm)}
+/* add card */
+.pj-add{display:flex;align-items:center;justify-content:center;padding:16px;border:1.5px dashed var(--line);border-radius:8px;background:0;cursor:pointer;color:var(--mist);font-family:'Crimson Pro',serif;font-size:14px;font-style:italic;transition:all .3s;width:100%;margin-top:8px}
+.pj-add:hover{border-color:var(--sage);color:var(--warm)}
 @keyframes fi{from{opacity:0}to{opacity:1}}
 @media(max-width:520px){.c{padding:32px 14px 100px}.hd-cn{font-size:34px;letter-spacing:8px}.qg{grid-template-columns:1fr;gap:8px}.tab{padding:10px 20px;font-size:11px;letter-spacing:2px}.nl{min-width:160px;font-size:12px}}
 </style>
@@ -153,6 +209,7 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
   <div class="tabs">
     <button class="tab on" id="tD" onclick="sw('d')">日</button>
     <button class="tab" id="tW" onclick="sw('w')">周</button>
+    <button class="tab" id="tP" onclick="sw('p')">活</button>
   </div>
 
   <!-- DAILY -->
@@ -197,6 +254,18 @@ textarea.wa::placeholder{color:var(--mist);font-style:italic}
     </div>
     <div class="htg"><button onclick="togH()">查看过往复盘</button></div>
     <div class="hp" id="hP" style="display:none"></div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="view" id="vP">
+    <div style="text-align:center;margin-bottom:8px;font-family:'Noto Serif SC',serif;font-size:20px;font-weight:600">我的活</div>
+    <div style="text-align:center;margin-bottom:20px;font-size:13px;color:var(--warm);font-style:italic">点击卡片展开详情和时间线</div>
+    <div class="pj-list" id="pjList"></div>
+    <button class="pj-add" onclick="addPj()">+ 新增一个活</button>
+    <div class="sv">
+      <button class="svb" id="svP" onclick="savePj()">存 下 来</button>
+      <div class="svm" id="mP">已保存 ✓</div>
+    </div>
   </div>
 </div>
 
@@ -310,8 +379,13 @@ function wL(o) { const s=wS(o),e=new Date(s);e.setDate(e.getDate()+6);const f=d=
 
 // ===== TABS =====
 function sw(t) {
-  if(t==='d'){saveDLocal();$('tD').classList.add('on');$('tW').classList.remove('on');$('vD').classList.add('on');$('vW').classList.remove('on')}
-  else{saveWLocal();$('tW').classList.add('on');$('tD').classList.remove('on');$('vW').classList.add('on');$('vD').classList.remove('on')}
+  saveDLocal(); saveWLocal();
+  $('tD').classList.toggle('on', t==='d');
+  $('tW').classList.toggle('on', t==='w');
+  $('tP').classList.toggle('on', t==='p');
+  $('vD').classList.toggle('on', t==='d');
+  $('vW').classList.toggle('on', t==='w');
+  $('vP').classList.toggle('on', t==='p');
 }
 
 function $(id) { return document.getElementById(id); }
@@ -489,6 +563,211 @@ async function togH() {
   }
 }
 
+// ===== PROJECTS =====
+let projects = [];
+let customTags = []; // user-defined tags
+
+const defProjects = [
+  {id:uid(),name:'数据新闻·智媒招考项目',pct:20,tags:['数据新闻','课程'],next:'',deadline:'',timeline:[],open:false},
+  {id:uid(),name:'atypica.AI 实习',pct:40,tags:['实习','内容营销'],next:'',deadline:'',timeline:[],open:false},
+  {id:uid(),name:'展览项目（大气科学史）',pct:5,tags:['兴趣','展览'],next:'',deadline:'',timeline:[],open:false}
+];
+
+const defTags = ['核心方向','实习','课程','数据新闻','内容营销','兴趣','展览','AI'];
+
+function renPj() {
+  const el = $('pjList');
+  el.innerHTML = '';
+  projects.forEach((p, i) => {
+    const cid = 'pjc-' + p.id;
+    const card = document.createElement('div'); card.className = 'pj-card'; card.id = cid;
+
+    // Head (always visible)
+    let headH = '<div class="pj-head" onclick="tglPjBody(' + i + ')">';
+    headH += '<input type="text" class="pj-name" value="' + esc(p.name) + '" placeholder="项目名称" oninput="projects[' + i + '].name=this.value" onclick="event.stopPropagation()">';
+    headH += '<span class="pj-pct-badge">' + (p.pct || 0) + '%</span>';
+    headH += '<span class="pj-arrow' + (p.open ? ' open' : '') + '">▾</span>';
+    headH += '<button class="pj-del" onclick="event.stopPropagation();rmPj(' + i + ')">×</button>';
+    headH += '</div>';
+
+    // Progress bar under head
+    headH += '<div class="pj-bar-wrap"><div class="pj-bar" style="width:' + (p.pct || 0) + '%"></div></div>';
+
+    // Body
+    let bodyH = '<div class="pj-body' + (p.open ? ' open' : '') + '">';
+
+    // Progress slider
+    bodyH += '<div class="pj-row" style="margin-top:10px"><span class="pj-label">进度</span>';
+    bodyH += '<div class="pj-slider-wrap"><div class="pj-slider-track" id="pjs-' + i + '" onmousedown="pjSliderStart(event,' + i + ')" ontouchstart="pjSliderStart(event,' + i + ')">';
+    bodyH += '<div class="pj-slider-fill" style="width:' + (p.pct || 0) + '%"></div>';
+    bodyH += '<div class="pj-slider-thumb" style="left:' + (p.pct || 0) + '%"></div>';
+    bodyH += '</div><span class="pj-slider-val">' + (p.pct || 0) + '%</span></div></div>';
+
+    // Tags
+    bodyH += '<div class="pj-row"><span class="pj-label">标签</span><div class="pj-tags">';
+    customTags.forEach(tag => {
+      const on = (p.tags || []).includes(tag);
+      bodyH += '<button class="pj-tag' + (on ? ' on' : '') + '" onclick="tglPjTag(' + i + ',\'' + esc(tag) + '\')">' + tag + '</button>';
+    });
+    bodyH += '<span id="pjta-' + i + '"></span>';
+    bodyH += '<button class="pj-tag-add" onclick="showTagInp(' + i + ')">+</button>';
+    bodyH += '</div></div>';
+
+    // Next step
+    bodyH += '<div class="pj-row"><span class="pj-label">下一步</span>';
+    bodyH += '<input type="text" class="pj-inp" value="' + esc(p.next || '') + '" placeholder="下一个具体动作…" oninput="projects[' + i + '].next=this.value"></div>';
+
+    // Deadline
+    bodyH += '<div class="pj-row"><span class="pj-label">截止</span>';
+    bodyH += '<input type="date" class="pj-date" value="' + (p.deadline || '') + '" onchange="projects[' + i + '].deadline=this.value"></div>';
+
+    // Timeline
+    bodyH += '<div class="pj-tl-title"><span>项目时间线</span><button class="pj-tl-add" onclick="addTlEntry(' + i + ')">+ 记一笔</button></div>';
+    bodyH += '<div class="pj-tl" id="pjtl-' + i + '">';
+    const tl = p.timeline || [];
+    if (tl.length === 0) {
+      bodyH += '<div style="padding:12px 0;color:var(--mist);font-style:italic;font-size:13px">还没有记录，点「记一笔」开始。</div>';
+    } else {
+      // Show newest first
+      tl.slice().reverse().forEach((entry, ri) => {
+        const ei = tl.length - 1 - ri;
+        bodyH += '<div class="pj-tl-entry">';
+        bodyH += '<div class="pj-tl-dot"></div>';
+        bodyH += '<div class="pj-tl-date">' + (entry.date || '') + (entry.pct !== undefined ? '  ·  ' + entry.pct + '%' : '') + '</div>';
+        bodyH += '<textarea class="pj-tl-text" rows="1" placeholder="做了什么…" oninput="projects[' + i + '].timeline[' + ei + '].text=this.value;autoGrow(this)">' + (entry.text || '') + '</textarea>';
+        bodyH += '<button class="pj-tl-del" onclick="rmTlEntry(' + i + ',' + ei + ')">×</button>';
+        bodyH += '</div>';
+      });
+    }
+    bodyH += '</div>';
+
+    bodyH += '</div>';
+    card.innerHTML = headH + bodyH;
+    el.appendChild(card);
+  });
+}
+
+function esc(s) { return (s || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+
+function tglPjBody(i) {
+  projects[i].open = !projects[i].open;
+  renPj();
+}
+
+function addPj() {
+  projects.push({id:uid(),name:'',pct:0,tags:[],next:'',deadline:'',timeline:[],open:true});
+  renPj();
+  const names = document.querySelectorAll('.pj-name');
+  if (names.length) names[names.length - 1].focus();
+}
+
+function rmPj(i) { if (confirm('确定删除「' + (projects[i].name || '未命名') + '」？')) { projects.splice(i, 1); renPj(); } }
+
+// Progress slider
+let pjDragIdx = -1;
+function pjSliderStart(e, i) {
+  pjDragIdx = i;
+  pjSliderCalc(e, i);
+  e.preventDefault();
+}
+
+function pjSliderCalc(e, i) {
+  const track = $('pjs-' + i);
+  if (!track) return;
+  const r = track.getBoundingClientRect();
+  const cx = e.touches ? e.touches[0].clientX : e.clientX;
+  const pct = Math.round(Math.max(0, Math.min(1, (cx - r.left) / r.width)) * 100);
+  projects[i].pct = pct;
+  // Update DOM directly for smooth dragging
+  track.querySelector('.pj-slider-fill').style.width = pct + '%';
+  track.querySelector('.pj-slider-thumb').style.left = pct + '%';
+  track.parentElement.querySelector('.pj-slider-val').textContent = pct + '%';
+  // Update header bar and badge
+  const card = track.closest('.pj-card');
+  if (card) {
+    const bar = card.querySelector('.pj-bar');
+    const badge = card.querySelector('.pj-pct-badge');
+    if (bar) bar.style.width = pct + '%';
+    if (badge) badge.textContent = pct + '%';
+  }
+}
+
+document.addEventListener('mousemove', e => { if (pjDragIdx >= 0) pjSliderCalc(e, pjDragIdx); });
+document.addEventListener('touchmove', e => { if (pjDragIdx >= 0) pjSliderCalc(e, pjDragIdx); }, {passive:true});
+document.addEventListener('mouseup', () => pjDragIdx = -1);
+document.addEventListener('touchend', () => pjDragIdx = -1);
+
+// Tags
+function tglPjTag(i, tag) {
+  const tags = projects[i].tags || [];
+  const idx = tags.indexOf(tag);
+  if (idx >= 0) tags.splice(idx, 1); else tags.push(tag);
+  projects[i].tags = tags;
+  renPj();
+}
+
+function showTagInp(i) {
+  const span = $('pjta-' + i);
+  if (!span) return;
+  span.innerHTML = '<input class="pj-tag-inp" placeholder="新标签" onkeydown="if(event.key===\'Enter\'){addCustomTag(' + i + ',this.value);}">';
+  span.querySelector('input').focus();
+}
+
+function addCustomTag(i, val) {
+  val = val.trim();
+  if (!val) return;
+  if (!customTags.includes(val)) customTags.push(val);
+  if (!(projects[i].tags || []).includes(val)) {
+    if (!projects[i].tags) projects[i].tags = [];
+    projects[i].tags.push(val);
+  }
+  renPj();
+}
+
+// Timeline
+function addTlEntry(i) {
+  if (!projects[i].timeline) projects[i].timeline = [];
+  const today = new Date().toISOString().split('T')[0];
+  projects[i].timeline.push({date: today, text: '', pct: projects[i].pct});
+  renPj();
+  // Focus the newest entry textarea
+  const tl = $('pjtl-' + i);
+  if (tl) { const areas = tl.querySelectorAll('.pj-tl-text'); if (areas.length) areas[0].focus(); }
+}
+
+function rmTlEntry(i, ei) {
+  projects[i].timeline.splice(ei, 1);
+  renPj();
+}
+
+function autoGrow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
+async function loadPj() {
+  const data = await load('ss-projects');
+  if (data) {
+    projects = data.projects || defProjects;
+    customTags = data.tags || defTags;
+  } else {
+    projects = defProjects;
+    customTags = defTags;
+  }
+  renPj();
+}
+
+async function savePj() {
+  $('svP').disabled = true;
+  // Collect tags from all projects to ensure customTags is complete
+  projects.forEach(p => {
+    (p.tags || []).forEach(t => { if (!customTags.includes(t)) customTags.push(t); });
+  });
+  await save('ss-projects', {projects, tags: customTags});
+  flash('mP');
+  $('svP').disabled = false;
+}
+
 // ===== SCHEDULE MODAL =====
 let mC = 9000;
 function openM() {
@@ -551,6 +830,7 @@ async function init() {
   renWk();
   await renD();
   await loadW();
+  await loadPj();
 }
 
 init();
